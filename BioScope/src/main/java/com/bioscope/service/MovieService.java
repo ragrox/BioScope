@@ -16,5 +16,11 @@ public class MovieService {
 		Movie movieResult = mongoTemplate.findOne(searchUserQuery, Movie.class);
 		return movieResult;
 	}
+	public Movie getMovieDetails(String movieId) {
+		System.out.println(movieId);
+		Query searchUserQuery = new Query(Criteria.where("movieName").is("Hitler"));
+		Movie movieResult = mongoTemplate.findOne(searchUserQuery, Movie.class);
+		return movieResult;
+	}
 
 }

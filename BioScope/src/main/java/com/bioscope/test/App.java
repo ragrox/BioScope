@@ -27,7 +27,7 @@ public class App {
              new AnnotationConfigApplicationContext(SpringMongoConfig.class);
 	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
  
-	User user = new User("mkyong", "password123");
+	User user = new User();
  
 	// save
 	mongoOperation.save(user);

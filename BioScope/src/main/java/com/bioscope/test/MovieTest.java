@@ -19,8 +19,8 @@ public class MovieTest {
 		Review review = new Review();
 		movie.setMovieName("Hitler");
 		movie.setMovieDescription("This is description");
-		movie.setCriticReview(null);
-		movie.setCasting(null);
+		//movie.setCriticReview(null);
+		//movie.setCasting(null);
 		mongoOperation.save(movie);
 		Query searchUserQuery = new Query(Criteria.where("movieName").is("Hitler"));
 		Movie movieResult = mongoOperation.findOne(searchUserQuery, Movie.class);

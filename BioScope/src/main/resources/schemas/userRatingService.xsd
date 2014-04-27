@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns="http://com/blog/samples/webservices/userRatingService"
+ xmlns:user="http://webservices.samples.blog.com/user"
+  targetNamespace="http://com/blog/samples/webservices/userRatingService"
+   elementFormDefault="qualified">
+	<xsd:import namespace="http://webservices.samples.blog.com/user" 
+	schemaLocation="user.xsd"/>
+	<xsd:element name="UserRatingRequest">
+		<xsd:complexType>
+		<xsd:sequence>
+		
+			<xsd:choice>
+      			<xsd:element name="userName" type="xsd:string"/>
+      			<xsd:element name="userId" type="xsd:string"/>
+    		</xsd:choice>
+    		<xsd:choice>
+      			<xsd:element name="movieName" type="xsd:string"/>
+      			<xsd:element name="movieId" type="xsd:string"/>
+    		</xsd:choice>
+    		<xsd:element name="rating" type="xsd:string"/>
+    		<xsd:element name="reviewDescription" type="xsd:string"/>
+		</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="userRatingResponse">
+	<xsd:complexType>
+	
+		<xsd:sequence>
+		<xsd:element name="RatingStatus" type="EnumRatingStatus"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+	</xsd:element>
+	<xsd:simpleType name="EnumRatingStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Active"/>
+			<xsd:enumeration value="Inactive"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

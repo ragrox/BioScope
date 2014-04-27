@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns="http://webservices.samples.blog.com/user"
+  xmlns:movie="http://webservices.samples.blog.com"
+  targetNamespace="http://webservices.samples.blog.com/user" 
+  elementFormDefault="qualified" >
+  	<xs:import namespace="http://webservices.samples.blog.com" 
+  	schemaLocation="movies.xsd"/>
+  
+	<xs:element name="User" type="User"/>
+	<xs:complexType name="User">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string"/>
+			<xs:element name="userName" type="xs:string"/>
+			<xs:element name="moviesWatched" type="listMovies"/>
+			<xs:element name="moviesRated" type="listMovies"/>
+			<xs:element name="moviesWatchLater" type="listMovies"/>
+		</xs:sequence>
+		</xs:complexType>
+			<xs:complexType name="listMovies">
+	  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+	    <xs:element name="movie" type="movie:Movie" />
+	  </xs:sequence>
+	</xs:complexType>
+</xs:schema>

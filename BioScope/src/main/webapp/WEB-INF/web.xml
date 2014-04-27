@@ -1,42 +1,64 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         id="WebApp_ID" version="2.5">
-
-    <display-name>BioScope</display-name>
-    
-   <!--
-		- Location of the XML file that defines the root application context.
-		- Applied by ContextLoaderListener.
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>BioScope</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/application-config.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/mvc-config.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+  
+  <!--
+		Define the Spring WS Servlet. The 'transformWsldLocations' param means
+		that any WSDLs generated are context-aware and contain the correct
+		path to their exposed port types. The 'contextConfigLocation' param
+		with an empty value means that the Spring context won't try to load
+		a file called webservices-servlet.xml
 	-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/application-config.xml</param-value>
-    </context-param>
+	<servlet>
+		<servlet-name>webservices</servlet-name>
+		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>transformWsdlLocations</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/ws-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    
-    
-    <!--
-		- Servlet that dispatches request to registered handlers (Controller implementations).
-	-->
-    <servlet>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/mvc-config.xml</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+	<servlet-mapping>
+		<servlet-name>webservices</servlet-name>
+		<url-pattern>*.wsdl</url-pattern>
+	</servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <url-pattern>*.html</url-pattern>
-    </servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>webservices</servlet-name>
+		<url-pattern>/endpoints/*</url-pattern>
+	</servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+        <web-resource-name>my-secure-app</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+</security-constraint>
 </web-app>
