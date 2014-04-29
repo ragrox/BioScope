@@ -24,6 +24,7 @@ public class MovieServiceEndPoint {
 
 		/* call Spring injected service implementation to retrieve account data */
 		Movie movie = movieService.getMovieDetails(request.getMovieId());
+		System.out.println(movie.getMovieDescription());
 		response.setMovieDetails(movie);
 		return response;
 	}

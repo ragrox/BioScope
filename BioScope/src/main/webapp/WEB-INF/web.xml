@@ -21,7 +21,9 @@
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
-  
+  <session-config>
+  <session-timeout>10</session-timeout>
+</session-config>
   <!--
 		Define the Spring WS Servlet. The 'transformWsldLocations' param means
 		that any WSDLs generated are context-aware and contain the correct
@@ -61,4 +63,5 @@
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
 </security-constraint>
+
 </web-app>

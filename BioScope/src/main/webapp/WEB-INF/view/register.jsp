@@ -37,7 +37,7 @@
 					<div class="col span_2_of_3">
 						<div class="contact-form">
 							<h2>REGISTER</h2>
-							<form method="post" action="contact-post.html">
+							<form method="post" action="addUser.html">
 								<div>
 									<span><label>User Name</label></span>
 									<span>
@@ -53,13 +53,13 @@
 								<div>
 									<span><label>Password</label></span>
 									<span>
-										<input name="userPassword" type="text" class="textbox">
+										<input name="userPassword" type="password" class="textbox">
 									</span>
 								</div>
 								<div>
 									<span><label>Confirm - Password</label></span>
 									<span>
-										<input name="userConfirmPassword" type="text" class="textbox">
+										<input name="userConfirmPassword" type="password" class="textbox">
 									</span>
 								</div>
 								<div>

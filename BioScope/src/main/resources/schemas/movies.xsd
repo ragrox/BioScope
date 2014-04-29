@@ -19,7 +19,7 @@
 		<xs:sequence>
 		<xs:element name="id" type="xs:string"/>
 		<xs:element name="movieId" type="xs:string"/>
-		<xs:element name="rating" type="xs:positiveInteger"/>
+		<xs:element name="rating" type="xs:decimal"/>
 		<xs:element name="reviewDescription" type="xs:string"/>
 		</xs:sequence>	
 	</xs:complexType>

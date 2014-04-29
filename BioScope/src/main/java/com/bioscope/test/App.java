@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 
 import com.bioscope.config.SpringMongoConfig;
+import com.bioscope.domain.Movie;
 import com.bioscope.domain.User;
  
 
@@ -28,15 +29,19 @@ public class App {
 	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
  
 	User user = new User();
- 
+	user.setUserName("Raghav");
 	// save
 	mongoOperation.save(user);
- 
+	String searchTerm = "the";
+	Query searchUserQuery = new Query(Criteria.where("movieName").regex(searchTerm ,"i"));
+
+	List<Movie> movieResult = mongoOperation.find(searchUserQuery, Movie.class);
+	System.out.println(movieResult.size());
 	// now user object got the created id.
 	System.out.println("1. user : " + user);
  
 	// query to search user
-	Query searchUserQuery = new Query(Criteria.where("username").is("mkyong"));
+	 searchUserQuery = new Query(Criteria.where("userName").is("Raghav"));
  
 	// find the saved user again.
 	User savedUser = mongoOperation.findOne(searchUserQuery, User.class);

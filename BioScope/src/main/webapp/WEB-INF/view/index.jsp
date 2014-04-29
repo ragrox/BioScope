@@ -1,5 +1,8 @@
 <jsp:include page="header.jsp"></jsp:include>
-			<div class="header_bottom">
+			<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Autocomplete - XML data parsed once</title>
+ <div class="header_bottom">
 				
 				<div class="header_bottom_right">
 					<!------ Slider ------------>

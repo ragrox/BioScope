@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp"></jsp:include>
 		</div>
 	</div>
@@ -12,22 +13,17 @@
 								<img src="images/preview.jpg" alt="" />
 							</div>
 							<div class="desc span_3_of_2">
-								<h2>TITLE OF THE MOVIE </h2>
+								<h2><c:out value='${movie.movieName}' /> </h2>
 								<h2>YEAR/GENRE </h2>
 								<p>
 									CASTING/CASTING/CASTING
 								</p>
 								<div class="price">
 									<p>
-										RATING: <span>****</span>
+										RATING:<c:out value='${movie.review.rating}' />
 									</p>
 								</div>
-								<div class="available">
-									<p style="color: #FC7D01;">
-										REVIEW
-									</p> SADFJASDFJASLKDVNXCMNVAHFU
-
-								</div>
+								
 
 							</div>
 							<div class="clear"></div>
@@ -35,11 +31,9 @@
 						<div class="product_desc">
 							<h2>Details :</h2>
 							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+								<c:out value='${movie.movieDescription}' />
 							</p>
-							<p>
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-							</p>
+							
 						</div>
 					</div>
 

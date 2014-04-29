@@ -1,0 +1,71 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch0="http://com/blog/samples/webservices/movieService" xmlns:sch1="http://webservices.samples.blog.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com/blog/samples/webservices/movieService" targetNamespace="http://com/blog/samples/webservices/movieService">
+<wsdl:types>
+<xsd:schema xmlns="http://com/blog/samples/webservices/movieService" xmlns:movie="http://webservices.samples.blog.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://com/blog/samples/webservices/movieService">
+<xsd:import namespace="http://webservices.samples.blog.com"/>
+<xsd:element name="MoviesRequest">
+<xsd:complexType>
+<xsd:choice>
+<xsd:element name="movieName" type="xsd:string"/>
+<xsd:element name="movieId" type="xsd:string"/>
+</xsd:choice>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="MoviesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="MovieDetails" type="movie:Movie"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+<xs:schema xmlns:review="http://webservices.samples.blog.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://webservices.samples.blog.com">
+<xs:element name="Movie" type="review:Movie"/>
+<xs:complexType name="Movie">
+<xs:sequence>
+<xs:element name="id" type="xs:string"/>
+<xs:element name="movieName" type="xs:string"/>
+<xs:element name="movieDescription" type="xs:string"/>
+<xs:element maxOccurs="unbounded" name="casting" type="xs:string"/>
+<xs:element name="review" type="review:Review"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Review">
+<xs:sequence>
+<xs:element name="id" type="xs:string"/>
+<xs:element name="movieId" type="xs:string"/>
+<xs:element name="rating" type="xs:decimal"/>
+<xs:element name="reviewDescription" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="MoviesRequest">
+<wsdl:part element="tns:MoviesRequest" name="MoviesRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="MoviesResponse">
+<wsdl:part element="tns:MoviesResponse" name="MoviesResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="MoviesDetailsService">
+<wsdl:operation name="Movies">
+<wsdl:input message="tns:MoviesRequest" name="MoviesRequest"></wsdl:input>
+<wsdl:output message="tns:MoviesResponse" name="MoviesResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="MoviesDetailsServiceSoap11" type="tns:MoviesDetailsService">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Movies">
+<soap:operation soapAction=""/>
+<wsdl:input name="MoviesRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="MoviesResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="MoviesDetailsServices">
+<wsdl:port binding="tns:MoviesDetailsServiceSoap11" name="MoviesDetailsServiceSoap11">
+<soap:address location="https://localhost:8443/BioScope/endpoints"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

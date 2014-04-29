@@ -52,6 +52,9 @@
 									</span>
 								</div>
 								<div>
+								<span>
+										<a href="register.html">Register</a>
+									</span>
 									<span>
 										<input type="submit" value="LOGIN"  class="mybutton">
 									</span>
