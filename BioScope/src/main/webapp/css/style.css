@@ -92,6 +92,42 @@ body {
 	-o-transition: all .2s linear; /* opera */
 	-ms-transition: all .2s linear;
 }
+#nav {
+
+    width: 650px;
+    height: 48px;
+    float: left;
+    
+}
+
+#nav a:hover {
+    color: #862e06;
+    text-decoration: underline;
+}
+
+#nav a {
+
+    text-shadow: 2px 3px 2px #715833;
+    border-right: 5px inset #76644F;
+    color: #260403;
+    display: inline;
+    float: left;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 14px;
+    font-style: italic;
+    margin: 12px 0 10px;
+    padding: 0 20px;
+    text-decoration: none;
+}
+
+#h2_a
+{
+    text-decoration:none;
+}
+
+#lastchild {
+    border-right: none 0px !important;
+}
 .header {
 	background: #FFF;
 }
@@ -927,7 +963,7 @@ body {
 	padding-bottom: 5px;
 	font-family: verdana, arial, helvetica, helve, sans-serif;
 }
-.contact-form input[type="text"], .contact-form textarea {
+.contact-form input[type="text"], .contact-form textarea ,input[type="password"]{
 	padding: 8px;
 	display: block;
 	width: 98%;

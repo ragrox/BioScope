@@ -48,7 +48,7 @@
 								<div>
 									<span><label>Password</label></span>
 									<span>
-										<input name="upass" type="text" class="textbox">
+										<input name="upass" type="password" class="textbox">
 									</span>
 								</div>
 								<div>

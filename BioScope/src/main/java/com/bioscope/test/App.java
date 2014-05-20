@@ -1,17 +1,10 @@
 package com.bioscope.test;
 
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 
 import com.bioscope.config.SpringMongoConfig;
-import com.bioscope.domain.Movie;
-import com.bioscope.domain.User;
  
 
 //import org.springframework.context.support.GenericXmlApplicationContext;
@@ -28,7 +21,7 @@ public class App {
              new AnnotationConfigApplicationContext(SpringMongoConfig.class);
 	MongoOperations mongoOperation = (MongoOperations) ctx.getBean("mongoTemplate");
  
-	User user = new User();
+/*	User user = new User();
 	user.setUserName("Raghav");
 	// save
 	mongoOperation.save(user);
@@ -61,7 +54,7 @@ public class App {
  
 	// List, it should be empty now.
 	List<User> listUser = mongoOperation.findAll(User.class);
-	System.out.println("4. Number of user = " + listUser.size());
+	System.out.println("4. Number of user = " + listUser.size());*/
  
     }
  

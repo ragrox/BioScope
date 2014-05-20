@@ -8,10 +8,12 @@ xmlns="http://com/blog/samples/webservices/movieService"
 	schemaLocation="movies.xsd"/>
 	<xsd:element name="MoviesRequest">
 		<xsd:complexType>
-		<xsd:choice>
-			<xsd:element name="movieName" type="xsd:string"/>
-      			<xsd:element name="movieId" type="xsd:string"/>
-    		</xsd:choice>
+		<xsd:sequence>
+				<xsd:element name="tokenName" type="xsd:string"/>
+				<xsd:element name="tokenPassword" type="xsd:string"/>
+      			<xsd:element name="movieName" type="xsd:string"/>
+		</xsd:sequence>
+    		
 		</xsd:complexType>
 	</xsd:element>
 	<xsd:element name="MoviesResponse">

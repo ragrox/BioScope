@@ -3,8 +3,12 @@
   <display-name>BioScope</display-name>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/application-config.xml</param-value>
+    <param-value>classpath:spring/application-config.xml
+    			classpath:spring/client-config.xml	</param-value>
   </context-param>
+  <welcome-file-list>
+<welcome-file>index.html</welcome-file>
+</welcome-file-list>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -57,7 +61,7 @@
   <security-constraint>
     <web-resource-collection>
         <web-resource-name>my-secure-app</web-resource-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.html</url-pattern>
     </web-resource-collection>
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bioscope.domain.Movie;
+import com.bioscope.domain.movieService.Movie;
 import com.bioscope.service.MovieService;
  
 @Controller

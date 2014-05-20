@@ -3,6 +3,8 @@ package com.bioscope.test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -13,8 +15,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.data.mongodb.core.MongoOperations;
 
 import com.bioscope.config.SpringMongoConfig;
-import com.bioscope.domain.Movie;
-import com.bioscope.domain.Review;
+import com.bioscope.domain.movieService.ListReviews;
+import com.bioscope.domain.movieService.Movie;
+import com.bioscope.domain.movieService.Review;
 
 public class MovieLoad {
 	public static void main(String[] args) throws Exception{
@@ -30,7 +33,7 @@ public class MovieLoad {
 		Movie movie = new Movie();
 		try
 		{
-			FileInputStream file = new FileInputStream(new File("movies.xlsx"));
+			FileInputStream file = new FileInputStream(new File("movieList.xlsx"));
 
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -49,8 +52,22 @@ public class MovieLoad {
 					movie.setMovieName(row.getCell(0).getStringCellValue());
 					movie.setMovieDescription(row.getCell(1).getStringCellValue());
 					review = new Review();
-					review.setRating(new BigDecimal(row.getCell(3).getRawValue()));
-					movie.setReview(review);
+					review.setUserName("pranit");
+					review.setReviewDescription("Test Value while loading");
+					movie.setRating(row.getCell(3).getRawValue());
+					//System.out.println(row.getCell(2).getStringCellValue());
+					String split[] = row.getCell(2).getStringCellValue().split(",");
+					ArrayList<String> list = new ArrayList<String>();
+					for( String cast : split){
+						list.add(cast);
+					}
+					movie.setCasting(list);
+					movie.setGenre(row.getCell(4).getRawValue());
+					movie.setYear(row.getCell(5).getRawValue());
+					ListReviews listReviews = new ListReviews();
+					List<Review> reviews = listReviews.getReview();
+					reviews.add(review);
+					movie.setListReviews(listReviews);
 					mongoOperation.save(movie);
 				}
 			}

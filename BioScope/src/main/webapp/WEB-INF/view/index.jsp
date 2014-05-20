@@ -1,5 +1,6 @@
 <jsp:include page="header.jsp"></jsp:include>
 			<head>
+			
   <meta charset="utf-8">
   <title>jQuery UI Autocomplete - XML data parsed once</title>
  <div class="header_bottom">
@@ -29,7 +30,7 @@
 			<div class="content_index">
 				<div class="content_top">
 					<div class="heading">
-						<h3>New Products</h3>
+						<h3>New Movies</h3>
 					</div>
 				</div>
 				<div class="section group">
@@ -39,7 +40,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -50,7 +51,7 @@
 						<div class="price-details">
 						
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -62,7 +63,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -74,7 +75,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -85,7 +86,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -99,7 +100,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -111,7 +112,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -123,7 +124,7 @@
 						<div class="price-details">
 						
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -135,7 +136,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -146,7 +147,7 @@
 						<div class="price-details">
 							
 							<div class="add-cart">
-								<h4><a href="preview.html">Add to Wishlist</a></h4>
+								
 							</div>
 							<div class="clear"></div>
 						</div>

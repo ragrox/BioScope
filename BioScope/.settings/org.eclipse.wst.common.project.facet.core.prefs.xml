@@ -1,7 +1,7 @@
 <root>
   <facet id="jpt.jaxb">
     <node name="classgen">
-      <attribute name="package" value="com.bioscope.domain"/>
+      <attribute name="package" value="com.bioscope.domain.userService"/>
     </node>
   </facet>
 </root>

@@ -1,11 +1,18 @@
 <!DOCTYPE HTML>
 <head>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<title>The Bioscope</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 	<link href="css/slider.css" rel="stylesheet" type="text/css" media="all"/>
-	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type='text/javascript' src='js/jquery-1.6.3.js'></script>
+  
+  
+      <link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+  
+  
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
@@ -14,41 +21,34 @@
 			$('#slider').nivoSlider();
 		});
 	</script>
-	 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="http://code.jquery.com/resources/demos/style.css">
-  <style>
-  .ui-autocomplete-loading { background: white url('images/ui-anim_basic_16x16.gif') right center no-repeat; }
-  </style>
-  <script>
-  $(function() {
-    function log( message ) {
-      $( "<div/>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).attr( "scrollTop", 0 );
-    }
- 
-    $.ajax({
-      url: "listAllMovies.html",
-      dataType: "xml",
-      success: function( xmlResponse ) {
-        var data = $( "Movies", xmlResponse ).map(function() {
-          return {
-            value: $( "movie", this ).text() 
-          };
-        }).get();
-        $( "#searchBox" ).autocomplete({
-          source: data,
-          minLength: 2,
-          select: function( event, ui ) {
-            log( ui.item ?
-              "Selected: " + ui.item.value : "No value" );
-          }
-        });
-      }
-    });
-  });
-  </script>
+	<script type='text/javascript'>
+	
+
+   
+
+var data = [
+       	 <c:forEach var="movie" items="${list}">
+    		{"label" : "<c:out value='${movie.movieName}'/>"},
+    		  </c:forEach>
+    		];
+$(function() {
+	
+	$( "#searchBox" ).autocomplete(
+	{
+		source:data,
+		select: function( event, ui ) {
+			$( "#searchBox" ).val( ui.item.label);
+			return false;
+		}
+	}).data( "autocomplete" )._renderItem = function( ul, item ) {
+		return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a href=movieInfo.html?="+ item.label + "><strong>" + item.label + "</strong></a>" )
+			.appendTo( ul );
+		};		
+
+});
+</script>
 			
 </head>
 <body>
@@ -57,21 +57,51 @@
 			<div class="wrap">
 				<div class="nav_list">
 					<a href="index.html"><img src="images/logo.png" alt="" width="300px" height="70px"/></a>
-							
+						
 					
 				</div>
 				
 			</div>
-		
+	
 		</div>
 		<div class="wrap">
+		
 			<div class="header_top">
-				
+		
+					<%-- 					<span style="float:left">
+		<ul>
+		<%
+		if( session.getAttribute("uname") == null){
+		%>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="register.html">Register</a></li>
+		<%}else{ %>
+		<li> Hello <%= session.getAttribute("uname") %> !</li>
+		<%if( session.getAttribute("role_user") != null){ %>
+		<li> <a href="addMovie.html">Add a Movie</a></li>
+		<%} }%>
+		</ul>
+		</span> --%>
+		<div id="nav">
+					<%
+		if( session.getAttribute("uname") == null){
+		%>
+                    <a href="login.html">LOGIN</a>
+                    <a href="register.html" id="lastchild">REGISTER</a>
+<%}else{ %>
+		
+		<%if( session.getAttribute("urole") != null){ %>
+		<a href="addMovie.html">Add Movie (admin)</a>
+		<%} %>
+		<a href='userInfo.html?userName=<%= session.getAttribute("uname") %>'> Hello <%= session.getAttribute("uname") %> !</a>
+		<a href="logout.html" id="lastchild"> Logout</a>
+<%}%>
+                </div>
 				<div class="header_top_right">
-					<a href="login.html">Login</a>
+
 					<div class="search_box">
-						<form>
-							<input id="searchBox" type="text" size=200   placeholder="Find Movies and more..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+						<form action="movieInfo.html" method="GET">
+							<input id="searchBox" name="movieName" type="text" size=200>
 							<input type="submit" value="">
 						</form>
 					</div>

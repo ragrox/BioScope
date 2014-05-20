@@ -12,14 +12,13 @@
 			<xs:element name="id" type="xs:string"/>
 			<xs:element name="userName" type="xs:string"/>
 			<xs:element name="email" type="xs:string"/>
-			<xs:element name="moviesWatched" type="listMovies"/>
+			<xs:element name="role" type="xs:string"/>
 			<xs:element name="moviesRated" type="listMovies"/>
-			<xs:element name="moviesWatchLater" type="listMovies"/>
 		</xs:sequence>
 		</xs:complexType>
 			<xs:complexType name="listMovies">
 	  <xs:sequence minOccurs="0" maxOccurs="unbounded">
-	    <xs:element name="movie" type="movie:Movie" />
+	    <xs:element name="movieName" type="xs:string" />
 	  </xs:sequence>
 	</xs:complexType>
 </xs:schema>
